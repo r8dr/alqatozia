@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>محول الكيبورد العربي</title>
+<style>
+body { font-family: 'Segoe UI', Tahoma, sans-serif; padding: 40px; direction: rtl; text-align: right; background: #1e1e2f; color: #fff; }
+h1 { text-align: center; margin-bottom: 30px; color: #ffcc00; }
+textarea { width: 100%; height: 120px; font-size: 20px; padding: 15px; border-radius: 10px; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.3); background: #2a2a3f; color: #fff; resize: none; }
+#output { margin-top: 20px; font-size: 22px; background: #2a2a3f; padding: 15px; border-radius: 10px; min-height: 60px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); word-wrap: break-word; }
+button { margin-top: 15px; padding: 12px 25px; font-size: 18px; cursor: pointer; border: none; border-radius: 8px; background: #ffcc00; color: #1e1e2f; transition: 0.3s; }
+button:hover { background: #e6b800; }
+</style>
+</head>
+<body>
+<h1>محول الكيبورد العربي</h1>
+<textarea id="input" placeholder="اكتب النص هنا بحروف إنجليزية..."></textarea>
+<br>
+<button onclick="convert()">حوّل إلى عربي</button>
+<div id="output"></div>
+
+<script>
+const map = {
+  'q':'ض','w':'ص','e':'ث','r':'ق','t':'ف','y':'غ','u':'ع','i':'ه','o':'خ','p':'ح','[':'ج',']':'د',
+  'a':'ش','s':'س','d':'ي','f':'ب','g':'ل','h':'ا','j':'ت','k':'ن','l':'م',';':'ك',''':'ط',
+  'z':'ئ','x':'ء','c':'ؤ','v':'ر','b':'لا','n':'ى','m':'ة',',':'و','.':'ز','/':'ظ',' ':' '
+};
+
+function convert(){
+  let text = document.getElementById('input').value;
+  let result = '';
+  for(let char of text){
+    result += map[char] || char;
+  }
+  document.getElementById('output').textContent = result;
+}
+</script>
+</body>
+</html>
